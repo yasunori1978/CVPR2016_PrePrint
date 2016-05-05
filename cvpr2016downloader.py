@@ -16,8 +16,10 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
         pdf = ""
         out = 0
         abses=[]
+
         
-        for l in urllib.urlopen(url).readlines():
+        u = urllib.urlopen(url)
+        for l in u.readlines():
 
             if '<title>' in l:
                 l_title = l.split('<title>')[1].split('</title>')[0].rstrip().replace('&#8220','“').replace('&#8221','”').replace(':',' ').replace('<small>','').replace('</small>','').replace('<i>','').replace('</i>','').replace('<sup>','').replace('</sup>','').replace('-',' ').replace('&#8212',"—").replace('&#8216',"‘").replace('&#8217',"’").replace('&#239','ï').replace('&#246','ö').replace('&#126','~').replace('&#8211','–')
@@ -49,7 +51,8 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
         pdf = "Not Found in ArXiv"
         aus = ""
         abs = ""
-        
+
+    u.close()
     if l_title.lower() in title.lower():
         out = 1
     else:
