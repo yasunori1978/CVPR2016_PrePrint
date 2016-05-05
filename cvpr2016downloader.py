@@ -10,15 +10,12 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
         title = title.replace('<small>','').replace('</small>','').replace('<i>','').replace('</i>','').replace('<sup>','').replace('</sup>','').replace('-',' ').replace('&#8212',"—").replace('&#8216',"‘").replace('&#8217',"’").replace('&#239','ï').replace('&#246','ö').replace('&#126','~').replace('&#8211','–') 
         
         url = 'http://export.arxiv.org/api/query?search_query=all:'+title+'&start=0&max_results=100'
+    u = urllib.urlopen(url)
     try:
-
         authors = []
         pdf = ""
         out = 0
         abses=[]
-
-        
-        u = urllib.urlopen(url)
         for l in u.readlines():
 
             if '<title>' in l:

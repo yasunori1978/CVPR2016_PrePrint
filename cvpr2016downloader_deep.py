@@ -10,6 +10,7 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
 
         
         url = 'http://export.arxiv.org/api/query?search_query=all:'+title+'&start=0&max_results=100'
+    u = urllib.urlopen(url)
     try:
 
         authors = []
@@ -18,7 +19,7 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
         deep = 0
         abses=[]
         
-        u = urllib.urlopen(url)
+
         for l in u.readlines():
 
             if '<title>' in l:
