@@ -97,7 +97,7 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
             aus += (author.split('<name>')[1].split('</name>')[0].rstrip())+","
         for ab in abses:
             abs += ab.replace('<summary>',"").replace('</summary>',"").rstrip()
-        u.close()            
+    u.close()            
     except IndexError:
         pdf = "Not Found in ArXiv"
         aus = ""
