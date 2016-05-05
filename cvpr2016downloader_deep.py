@@ -14,6 +14,7 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
 
         authors = []
         pdf = ""
+        out = 0
         deep = 0
         abses=[]
         
@@ -101,7 +102,7 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
         aus = ""
         abs = ""
     if l_title.lower() in title.lower():
-        next
+        out=1
     else:
         if might_be_CVPR == 0:        
             pdf = "Not Found in ArXiv"
@@ -109,8 +110,11 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
             abs = ""
     if deep == 1:        
         print pdf+"\t"+title+"\t"+aus+"\t"+abs
+        if out == 1:
+            out = 0
+            break
     deep = 0
-    
+    out = 0
 might_be_CVPR=0
         
 
