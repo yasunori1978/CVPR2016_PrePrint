@@ -15,7 +15,7 @@ def ltitle_spliter( title ):
 for l in [ line  for line in res.readlines() if '<strong>' in line ]:
     might_be_CVPR=0
     if not '<a' in l:
-        title = title_spliter(title)
+        title = title_spliter(l)
         
         url = 'http://export.arxiv.org/api/query?search_query=all:'+title+'&start=0&max_results=100'
 
@@ -28,12 +28,9 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
             for l in u.readlines():
                 if '<title>' in l:
                     l_title = ltitle_spliter(l)
-            
                 if '</arxiv:comment>' in l:
                     if 'CVPR 2016' in l:
                         might_be_CVPR = 1
-
-                    
                 if '<link title="pdf"' in l:
                     pdf = l.split('"')[3]
                 if '<name>' in l:
@@ -43,7 +40,6 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
                     abses.append(l)
                 if '</summary>' in l:
                      sum = 0
-                
                 aus = ""
                 abs = ""
                 for author in authors:
