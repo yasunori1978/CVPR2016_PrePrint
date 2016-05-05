@@ -62,7 +62,10 @@ for l in [ line  for line in res.readlines() if '<strong>' in line ]:
                 abs = ""
             else:
                 out = 1
-                
+        if out == 0:
+                aus = ""
+                abs = ""
+            
         print pdf+"\t"+title+"\t"+aus+"\t"+abs
         if out == 1:
             out = 0
